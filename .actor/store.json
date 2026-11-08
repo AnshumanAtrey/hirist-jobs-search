@@ -1,5 +1,6 @@
 {
-    "$comment": "Listing metadata, applied by scripts/store-metadata.mjs in CI (manager/rules/SEO.md). No actorId yet: the first deploy creates the actor, then its ID goes here so CI updates it by ID. isPublic stays false until the priced proof run on Apify.",
+    "$comment": "Listing metadata, applied by scripts/store-metadata.mjs (manager/rules/SEO.md): by CI after every deploy, or run by hand from a fresh clone of main while GitHub Actions is locked (BRIEF-3.md). actorId pins the Actor that the first apify push created on 2026-11-08 (build 1.0.1), so a rename in actor.json updates the same Actor. isPublic stays false until the priced proof run on Apify and the owner's final check.",
+    "actorId": "GYgP2fbxen58OSl3v",
     "seoTitle": "Hirist Jobs Scraper - IT Jobs by Skill & Experience",
     "seoDescription": "Search every hirist.tech job at once: IT and tech jobs in India by title, skill, city and years of experience, newest first, with pay in lakhs. No login.",
     "exampleRunInput": {
