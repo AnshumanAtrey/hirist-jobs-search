@@ -49,7 +49,7 @@ Pay per event: $0.016 per 1,000 jobs, or $0.019 per 1,000 with full details, plu
 | Job with details | $0.000019 | One saved job with full details on |
 | Run start | $0.0068 per GB of memory | Charged by Apify when a run starts: once up to 1 GB and once more for each extra GB, so $0.0068 at the default 512 MB |
 
-Hirist Jobs Scraper's Apify Store header, "from $0.011 / 1,000 jobs", shows the GOLD price, the lowest of the public discount tiers. Each Apify plan pays its own tier's price: FREE (the free plan) $0.000016 a job and $0.000019 with details, BRONZE (Starter) $0.000016 and $0.000018, SILVER (Scale) $0.000013 and $0.000015, GOLD (Business) $0.000011 and $0.000013, PLATINUM and DIAMOND $0.000011 and $0.000012. The run start is a flat fee on every plan, $0.0068 per GB of memory ($0.0068 at the default 512 MB), and the header never shows it.
+Hirist Jobs Scraper's Apify Store header, "from $0.011 / 1,000 jobs", shows the GOLD price, the lowest of the public discount tiers. Each Apify plan pays its own tier's price: FREE (the free plan) $0.000016 a job and $0.000019 with details, BRONZE (Starter) $0.000016 and $0.000018, SILVER (Scale) $0.000013 and $0.000015, GOLD (Business) and the enterprise tiers above it $0.000011 and $0.000013. The run start is a flat fee on every plan, $0.0068 per GB of memory ($0.0068 at the default 512 MB), and the header never shows it.
 
 | Run (free plan price, default memory) | Cost |
 |---|---|
