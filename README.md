@@ -86,7 +86,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 | Where the job is (`location`) | A city, state or country: Bangalore, Bengaluru, Pune, Delhi NCR, Karnataka, India. Remote alone asks for remote jobs; next to other places it narrows nothing |
 | Experience (`experienceYears`) | Your years: a number such as 5, a range such as 3-6, 10+ for 10 or more, or fresher for 0. A job matches when the years it asks for overlap yours |
 | Remote or onsite (`workType`) | remote is what Hirist marks work from home or lists as Remote; onsite is every other job |
-| Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 48 hours |
+| Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days (the default), any time, or your own period such as 48 hours |
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
 | Full details (`includeDetails`) | Adds the description as text and HTML, the number of applicants, the recruiter's own apply link when given, and the city, state and country |
 | Leave out words (`excludeTerms`) | Drops jobs whose title has these words, such as senior or lead |

@@ -27,7 +27,7 @@ Source: https://github.com/AnshumanAtrey/hirist-jobs-search
 - Where the job is (location): city, state or country; Remote alone asks for remote jobs, next to other places it narrows nothing.
 - Experience (experienceYears): your years, a number such as 5, a range such as 3-6, 10+ for 10 or more, or fresher for 0; a job matches when the years it asks for overlap yours.
 - Remote or onsite (workType): remote is what Hirist marks work from home or lists as Remote; onsite is every other job.
-- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
+- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days (the default), any time, or your own period.
 - Number of jobs (maxJobs): 100 by default, 0 for every match.
 - Full details (includeDetails): adds the description, the number of applicants, the recruiter's own apply link when given, and the city, state and country.
 - Leave out words (excludeTerms): drops jobs whose title has these words.
