@@ -16,7 +16,7 @@
     },
     "defaultRunOptions$comment": "Default 1 GB, from local runs on 2026-11-08 (engine branch platform/hirist): a keyword search reads 1 to 10 pages of 1,000 jobs, a few seconds; a run that needs every job reads the whole board, 28,770 jobs in 240 calls and about 90 MB, 28 s on the laptop with a 155 MB Python peak. Re-measure on Apify at 512 MB, 1 GB and 2 GB before publishing: CPU comes with memory, and parsing 90 MB of JSON on a quarter core is the cost that decides the default.",
     "pricing": {
-        "$comment": "2026-11-08, round 2 (BRIEF-2.md): apply is false for the first deploy, so the measuring runs on Apify run unpriced and their cost is the platform's alone; the prices below are round 1's and are replaced by the tiered prices computed from those runs (owner's markup ladder, BRIEF-2.md section 4), which then go in as the Actor's first pricing with apply true. isPublic stays false until the owner's final check.",
+        "$comment": "2026-11-08, round 3 (BRIEF-3.md): GitHub Actions is locked, so this Actor goes up with apify push from a fresh clone of main and its listing with scripts/store-metadata.mjs run locally (owner-approved exception to deploying through CI). apply is false for the first deploy, so the measuring runs on Apify are unpriced and their cost is the platform's alone; the prices below are round 1's placeholders, replaced by the measured cost plus a 100 to 150% markup by tier (BRIEF-3.md section 3) before apply goes true. isPublic stays false until the owner's final check.",
         "apply": false,
         "pricingInfos": [
             {
