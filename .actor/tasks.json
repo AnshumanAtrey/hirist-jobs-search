@@ -13,7 +13,7 @@
             "input": {
                 "searchTerms": [],
                 "location": [],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [],
                 "postedWithin": "24 hours",
                 "maxJobs": 100,
@@ -28,7 +28,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "postedWithin",
                 "maxJobs"
             ],
@@ -41,7 +41,7 @@
             "input": {
                 "searchTerms": [],
                 "location": [],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [
                     "remote"
                 ],
@@ -58,7 +58,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "workType",
                 "postedWithin",
                 "maxJobs"
@@ -76,7 +76,7 @@
                 "location": [
                     "Bangalore"
                 ],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,
@@ -91,7 +91,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "postedWithin",
                 "maxJobs"
             ],
@@ -106,7 +106,7 @@
                     "java developer"
                 ],
                 "location": [],
-                "experience": "5",
+                "experienceYears": "5",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,
@@ -121,7 +121,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "postedWithin",
                 "maxJobs"
             ],
@@ -136,7 +136,7 @@
                     "data engineer"
                 ],
                 "location": [],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,
@@ -151,7 +151,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "postedWithin",
                 "maxJobs"
             ],
@@ -170,7 +170,7 @@
                     "Pune",
                     "Hyderabad"
                 ],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,
@@ -185,7 +185,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "postedWithin",
                 "maxJobs"
             ],
@@ -200,7 +200,7 @@
                     "react"
                 ],
                 "location": [],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,
@@ -215,7 +215,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "searchDescriptions",
                 "maxJobs"
             ],
@@ -228,7 +228,7 @@
             "input": {
                 "searchTerms": [],
                 "location": [],
-                "experience": "fresher",
+                "experienceYears": "fresher",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,
@@ -243,7 +243,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "postedWithin",
                 "maxJobs"
             ],
@@ -258,7 +258,7 @@
                 "location": [
                     "Delhi NCR"
                 ],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 100,
@@ -273,7 +273,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "postedWithin",
                 "maxJobs"
             ],
@@ -286,7 +286,7 @@
             "input": {
                 "searchTerms": [],
                 "location": [],
-                "experience": "",
+                "experienceYears": "",
                 "workType": [],
                 "postedWithin": "any time",
                 "maxJobs": 50,
@@ -301,7 +301,7 @@
             "inputSchemaFields": [
                 "searchTerms",
                 "location",
-                "experience",
+                "experienceYears",
                 "includeDetails",
                 "maxJobs"
             ],

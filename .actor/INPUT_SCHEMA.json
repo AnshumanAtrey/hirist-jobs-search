@@ -28,8 +28,8 @@
             "default": [],
             "nullable": true
         },
-        "experience": {
-            "title": "Years of experience (experience)",
+        "experienceYears": {
+            "title": "Experience (experienceYears)",
             "type": "string",
             "editor": "textfield",
             "description": "Type your years of experience, for example 5, or a range such as 3-6, 10+ or fresher. A job matches when the years it asks for include yours, as on Hirist: 5 finds a job for 4 to 8 years. Leave it empty for any experience. Same as minexp and maxexp in Hirist's own search links.",

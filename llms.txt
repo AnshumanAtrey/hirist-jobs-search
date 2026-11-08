@@ -24,7 +24,7 @@ Source: https://github.com/AnshumanAtrey/hirist-jobs-search
 
 - Job titles to find (searchTerms): one per line; a job matches when its title has every word.
 - Where the job is (location): city, state or country; Remote asks for remote jobs.
-- Years of experience (experience): your years, such as 5, or a range such as 3-6, 10+ or fresher.
+- Experience (experienceYears): your years, such as 5, or a range such as 3-6, 10+ or fresher.
 - Remote or onsite (workType): remote is what Hirist marks work from home or lists as Remote; onsite is every other job.
 - Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
 - Number of jobs (maxJobs): 100 by default, 0 for every match.
@@ -82,7 +82,7 @@ A few seconds for most searches: in local runs on 2026-11-08 the empty form took
 {
   "searchTerms": ["python developer"],
   "location": ["Bangalore", "Pune"],
-  "experience": "5",
+  "experienceYears": "5",
   "postedWithin": "7 days",
   "maxJobs": 100
 }

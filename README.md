@@ -84,7 +84,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 |---|---|
 | Job titles to find (`searchTerms`) | One per line. A job matches when its title has every word: frontend also finds Front-End. A pasted Hirist search link works too |
 | Where the job is (`location`) | A city, state or country: Bangalore, Bengaluru, Pune, Delhi NCR, Karnataka, India. Remote asks for remote jobs |
-| Years of experience (`experience`) | Your years, such as 5, or a range such as 3-6, 10+ or fresher. A job matches when the years it asks for include yours |
+| Experience (`experienceYears`) | Your years, such as 5, or a range such as 3-6, 10+ or fresher. A job matches when the years it asks for include yours |
 | Remote or onsite (`workType`) | remote is what Hirist marks work from home or lists as Remote; onsite is every other job |
 | Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 48 hours |
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
@@ -100,7 +100,7 @@ Example input:
 {
   "searchTerms": ["python developer"],
   "location": ["Bangalore", "Pune"],
-  "experience": "5",
+  "experienceYears": "5",
   "postedWithin": "7 days",
   "maxJobs": 100
 }
@@ -167,7 +167,7 @@ Hirist's search box matches words loosely and ranks by relevance, so a search mi
 
 ### How does years of experience work?
 
-Every Hirist job asks for a range of years, such as 4 to 8. Type your years in Years of experience (`experience`), such as 5, and Hirist Jobs Scraper keeps the jobs whose range includes 5, the same rule as Hirist's own filter. A range such as 3-6 keeps the jobs whose range overlaps it, 10+ keeps those that take 10 years or more, and fresher keeps those that start at 0. Every row carries the range in `experienceMin` and `experienceMax`.
+Every Hirist job asks for a range of years, such as 4 to 8. Type your years in Experience (`experienceYears`), such as 5, and Hirist Jobs Scraper keeps the jobs whose range includes 5, the same rule as Hirist's own filter. A range such as 3-6 keeps the jobs whose range overlaps it, 10+ keeps those that take 10 years or more, and fresher keeps those that start at 0. Every row carries the range in `experienceMin` and `experienceMax`.
 
 ### What does remote mean on Hirist?
 
