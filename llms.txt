@@ -19,12 +19,13 @@ Source: https://github.com/AnshumanAtrey/hirist-jobs-search
 - Years of experience the way Hirist reads it: 5 finds the jobs asking 4 to 8 years.
 - Reads a pasted Hirist search link with its words, city, experience and period.
 - Job link check: each pasted Hirist job link comes back open, closed or not found.
+- A search that finds nothing says why: Hirist has no job inside your filters, or which filter left jobs out and how to loosen it.
 
 ## Input keys
 
 - Job titles to find (searchTerms): one per line; a job matches when its title has every word.
-- Where the job is (location): city, state or country; Remote asks for remote jobs.
-- Experience (experienceYears): your years, such as 5, or a range such as 3-6, 10+ or fresher.
+- Where the job is (location): city, state or country; Remote alone asks for remote jobs, next to other places it narrows nothing.
+- Experience (experienceYears): your years, a number such as 5, a range such as 3-6, 10+ for 10 or more, or fresher for 0; a job matches when the years it asks for overlap yours.
 - Remote or onsite (workType): remote is what Hirist marks work from home or lists as Remote; onsite is every other job.
 - Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
 - Number of jobs (maxJobs): 100 by default, 0 for every match.

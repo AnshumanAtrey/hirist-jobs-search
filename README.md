@@ -15,7 +15,7 @@ Use it as a Hirist API with no login, a hirist.tech scraper for IT jobs and tech
 
 ## How is it different from other Hirist scrapers?
 
-- **It finds what Hirist's own search misses.** Hirist's search box reads words loosely and ranks by relevance: on 2026-11-08 it gave 687 jobs for python developer in Bangalore, 130 of them with both words in the title, while this actor found 241 such jobs, all 130 among them. For react it gave 40 jobs; 880 jobs on Hirist have React in the title, and 2,131 list React as a skill. In the 4 searches compared, all 232 of Hirist's own results with the words in the title were in this actor's rows, and 79 of Hirist's 80 top results.
+- **It finds what Hirist's own search misses.** Hirist's search box reads words loosely and ranks by relevance: on 2026-11-08 it gave 687 jobs for python developer in Bangalore, 130 of them with both words in the title, while this actor found 246 such jobs, all 130 among them. For react it gave 40 jobs; 880 jobs on Hirist have React in the title, and 2,131 list React as a skill. In the 4 searches compared, all 232 of Hirist's own results with the words in the title were in this actor's rows, and 79 of Hirist's 80 top results.
 - **Every job, past 10,000.** Hirist's API stops one search at 10,000 jobs, about 50 days of postings, and keeps a job up for 150 days. This actor splits a bigger search by place and by years of experience and reads every part: 28,768 of the 28,770 jobs Hirist counted (it counts 2 twice). The most used Hirist actor stops at 1,000 jobs a run.
 - **Newest first by Hirist's own date.** The day Hirist shows on its job cards and in its job markup, with the exact time when that falls on the same day.
 - **Experience the way Hirist reads it.** 5 years finds the jobs asking 4 to 8 years, as on Hirist's filter, and the rows keep the range.
@@ -83,8 +83,8 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 | Field | What it does |
 |---|---|
 | Job titles to find (`searchTerms`) | One per line. A job matches when its title has every word: frontend also finds Front-End. A pasted Hirist search link works too |
-| Where the job is (`location`) | A city, state or country: Bangalore, Bengaluru, Pune, Delhi NCR, Karnataka, India. Remote asks for remote jobs |
-| Experience (`experienceYears`) | Your years, such as 5, or a range such as 3-6, 10+ or fresher. A job matches when the years it asks for include yours |
+| Where the job is (`location`) | A city, state or country: Bangalore, Bengaluru, Pune, Delhi NCR, Karnataka, India. Remote alone asks for remote jobs; next to other places it narrows nothing |
+| Experience (`experienceYears`) | Your years: a number such as 5, a range such as 3-6, 10+ for 10 or more, or fresher for 0. A job matches when the years it asks for overlap yours |
 | Remote or onsite (`workType`) | remote is what Hirist marks work from home or lists as Remote; onsite is every other job |
 | Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days, any time, or your own period such as 48 hours |
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
@@ -167,11 +167,15 @@ Hirist's search box matches words loosely and ranks by relevance, so a search mi
 
 ### How does years of experience work?
 
-Every Hirist job asks for a range of years, such as 4 to 8. Type your years in Experience (`experienceYears`), such as 5, and Hirist Jobs Scraper keeps the jobs whose range includes 5, the same rule as Hirist's own filter. A range such as 3-6 keeps the jobs whose range overlaps it, 10+ keeps those that take 10 years or more, and fresher keeps those that start at 0. Every row carries the range in `experienceMin` and `experienceMax`.
+Every Hirist job asks for a range of years, such as 4 to 8. Type your years in Experience (`experienceYears`), such as 5, and Hirist Jobs Scraper keeps the jobs whose range includes 5, the same rule as Hirist's own filter. A range such as 3-6 keeps the jobs whose range overlaps it, 10+ (10 or more) keeps the jobs open to someone with 10 years or more, and fresher (0) keeps those that start at 0. Every Hirist job states its range, so the filter leaves out no job for lack of one, and every row carries the range in `experienceMin` and `experienceMax`.
 
 ### What does remote mean on Hirist?
 
-Hirist marks a job as work from home or not, and some jobs list Remote as a place; Hirist Jobs Scraper calls those remote and every other job onsite. On 2026-11-08 that was 10.7% of jobs. Hirist has no hybrid mark, and its work-from-home jobs include hybrid ones: of 20 such descriptions read, 7 describe a hybrid setup. So hybrid in Remote or onsite (`workType`) reads as remote.
+Hirist marks a job as work from home or not, and some jobs list Remote as a place; Hirist Jobs Scraper calls those remote and every other job onsite. On 2026-11-08 that was 10.7% of jobs. Hirist has no hybrid mark, and its work-from-home jobs include hybrid ones: of 20 such descriptions read, 7 describe a hybrid setup. So hybrid in Remote or onsite (`workType`) reads as remote. Remote typed alone in Where the job is (`location`) asks for remote jobs too; typed next to a city it narrows nothing, because the city's remote jobs are already among its jobs: Bangalore with Remote finds the same 246 python developer jobs as Bangalore alone.
+
+### What if a search finds nothing?
+
+Hirist Jobs Scraper says why in the run's message and in its `OUTPUT` record, and charges only the run start. When your place, period and years of experience go to Hirist's own search and it has no job there, the message says Hirist has no job with your words inside your other filters. When jobs with your words were left out by a filter checked in the run, it names the filter that left them out and how to loosen it: on 2026-11-08, python developer in Pune, remote, in the last 3 days found 3 jobs with those words, and the work type alone left out 2 of them. The message also shows how your input was read.
 
 ### Does it need a login or an API key?
 

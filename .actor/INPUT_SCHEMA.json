@@ -20,7 +20,7 @@
             "title": "Where the job is (location)",
             "type": "array",
             "editor": "stringList",
-            "description": "Type where the jobs should be: cities, states or countries, one per line, for example Bangalore, Pune, Delhi NCR or Karnataka. Old and new city names both work (Bengaluru, Gurugram), Delhi NCR finds Delhi, Gurgaon, Noida and the rest, and India finds every job in India. Remote here asks for remote jobs. Leave it empty for anywhere.",
+            "description": "Type where the jobs should be: cities, states or countries, one per line, for example Bangalore, Pune, Delhi NCR or Karnataka. Old and new city names both work (Bengaluru, Gurugram), Delhi NCR finds Delhi, Gurgaon, Noida and the rest, and India finds every job in India. Remote alone asks for remote jobs; next to other places it narrows nothing. Leave it empty for anywhere.",
             "placeholderValue": "Bangalore",
             "example": [
                 "Bangalore"
@@ -32,7 +32,7 @@
             "title": "Experience (experienceYears)",
             "type": "string",
             "editor": "textfield",
-            "description": "Type your years of experience, for example 5, or a range such as 3-6, 10+ or fresher. A job matches when the years it asks for include yours, as on Hirist: 5 finds a job for 4 to 8 years. Leave it empty for any experience. Same as minexp and maxexp in Hirist's own search links.",
+            "description": "Type your years of experience: a number such as 5, a range such as 3-6, 10+ for 10 or more, or fresher for 0. A job is kept when the years it asks for overlap yours, as on Hirist's own filter: 5 finds a job for 4 to 8 years, and every Hirist job states its range. Leave it empty for any experience. Same as minexp and maxexp in Hirist's search links.",
             "example": "5",
             "default": "",
             "nullable": true
