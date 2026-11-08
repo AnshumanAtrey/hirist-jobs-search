@@ -1,0 +1,149 @@
+{
+    "title": "Hirist Jobs Search",
+    "description": "Type a job title or skill and press Start: you get the newest matching jobs on hirist.tech, India's tech job board (28,000+ open IT jobs). Every other field is optional. Press Start with the form empty for the newest jobs of every kind.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "searchTerms": {
+            "title": "Job titles to find (searchTerms)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type the job titles or skills to find, one per line, for example python developer or devops. A job matches when its title has every word of a line: frontend also finds Front-End. Tick Match skills too to search Hirist's skill tags as well. Leave it empty to get the newest jobs of every kind. A pasted Hirist search link works too.",
+            "placeholderValue": "python developer",
+            "example": [
+                "python developer"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "location": {
+            "title": "Where the job is (location)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type where the jobs should be: cities, states or countries, one per line, for example Bangalore, Pune, Delhi NCR or Karnataka. Old and new city names both work (Bengaluru, Gurugram), Delhi NCR finds Delhi, Gurgaon, Noida and the rest, and India finds every job in India. Remote here asks for remote jobs. Leave it empty for anywhere.",
+            "placeholderValue": "Bangalore",
+            "example": [
+                "Bangalore"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "experience": {
+            "title": "Years of experience (experience)",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Type your years of experience, for example 5, or a range such as 3-6, 10+ or fresher. A job matches when the years it asks for include yours, as on Hirist: 5 finds a job for 4 to 8 years. Leave it empty for any experience. Same as minexp and maxexp in Hirist's own search links.",
+            "example": "5",
+            "default": "",
+            "nullable": true
+        },
+        "workType": {
+            "title": "Remote or onsite (workType)",
+            "type": "array",
+            "editor": "select",
+            "description": "Pick remote or onsite. Leave it empty for both. Remote is what Hirist marks work from home or lists as Remote, about 1 job in 9; onsite is every other job. Hirist has no hybrid mark, so hybrid reads as remote, since its work-from-home jobs include the hybrid ones. Typed words such as wfh work too.",
+            "items": {
+                "type": "string",
+                "enumSuggestedValues": [
+                    "remote",
+                    "onsite"
+                ],
+                "enumTitles": [
+                    "Remote, work from home (remote)",
+                    "Onsite, in the office (onsite)"
+                ]
+            },
+            "example": [
+                "remote"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "postedWithin": {
+            "title": "Posted in the last (postedWithin)",
+            "type": "string",
+            "editor": "select",
+            "description": "Pick how new the jobs must be: posted in the last 24 hours, 3 days, 7 days or 30 days. Any time, the default, keeps every open job, newest first; Hirist keeps a job up for 150 days. You can also type your own period, such as 48 hours or 2 weeks.",
+            "enumSuggestedValues": [
+                "24 hours",
+                "3 days",
+                "7 days",
+                "30 days",
+                "any time"
+            ],
+            "enumTitles": [
+                "24 hours",
+                "3 days",
+                "7 days",
+                "30 days",
+                "any time"
+            ],
+            "example": "7 days",
+            "default": "any time",
+            "nullable": true
+        },
+        "maxJobs": {
+            "title": "Number of jobs (maxJobs)",
+            "type": "integer",
+            "editor": "number",
+            "unit": "jobs",
+            "description": "Type how many jobs to get, newest first: 100 by default. Type 0 to get every matching job, up to every job on Hirist. Each job is one charged row, so this sets the most a run can cost.",
+            "prefill": 100,
+            "example": 100,
+            "default": 100,
+            "sectionCaption": "How many and how much",
+            "nullable": true
+        },
+        "includeDetails": {
+            "title": "Full details (includeDetails)",
+            "type": "boolean",
+            "editor": "checkbox",
+            "description": "Tick to add the full details of each job: the description as text and HTML, the number of applicants, Hirist's own job link, an outside apply link when the recruiter gave one, and the city, state and country. The run reads each saved job once more. A job with details costs $3.70 per 1,000 instead of $3.60.",
+            "default": false,
+            "nullable": true
+        },
+        "excludeTerms": {
+            "title": "Leave out words (excludeTerms)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type words that leave a job out when its title has them, one per line, for example senior or lead. Leave it empty to keep every job.",
+            "placeholderValue": "senior",
+            "example": [
+                "senior"
+            ],
+            "default": [],
+            "sectionCaption": "Narrow the search",
+            "nullable": true
+        },
+        "searchDescriptions": {
+            "title": "Match skills too (searchDescriptions)",
+            "type": "boolean",
+            "editor": "checkbox",
+            "description": "Tick to match your words in each job's skills too, not only in its title. Hirist tags every job with its skills, such as React.js or Kubernetes, so react then finds every job that asks for React: 2,131 jobs instead of the 880 with React in the title on 2026-11-08.",
+            "default": false,
+            "nullable": true
+        },
+        "companies": {
+            "title": "Only these companies (companies)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Type company names to search only them, one per line, for example Unisys, or paste a Hirist company page link (hirist.tech/company/unisys-careers). A company with a Hirist page is read from it in seconds; any other name is found in the company of every job, which reads the whole board, about 30 seconds. Leave it empty to search every company.",
+            "placeholderValue": "Unisys",
+            "example": [
+                "Unisys"
+            ],
+            "default": [],
+            "nullable": true
+        },
+        "jobUrls": {
+            "title": "Job links to check (jobUrls)",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Paste Hirist job links to check whether they are still open, one per line, instead of searching. Each link comes back open with the job, closed, or not found. Links on hirist.tech and hirist.com work, old .html links too.",
+            "placeholderValue": "https://www.hirist.tech/j/gebbs-java-developer-1682327",
+            "default": [],
+            "sectionCaption": "Check job links",
+            "nullable": true
+        }
+    }
+}

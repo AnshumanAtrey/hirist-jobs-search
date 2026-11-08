@@ -1,0 +1,86 @@
+{
+    "$comment": "Listing metadata, applied by scripts/store-metadata.mjs in CI (manager/rules/SEO.md). No actorId yet: the first deploy creates the actor, then its ID goes here so CI updates it by ID. isPublic stays false until the priced proof run on Apify.",
+    "seoTitle": "Hirist Jobs Scraper - IT Jobs by Skill & Experience",
+    "seoDescription": "Search every hirist.tech job at once: IT and tech jobs in India by title, skill, city and years of experience, newest first, with pay in lakhs. No login.",
+    "exampleRunInput": {
+        "searchTerms": [
+            "python developer"
+        ]
+    },
+    "actorPermissionLevel": "LIMITED_PERMISSIONS",
+    "isPublic": false,
+    "defaultRunOptions": {
+        "build": "latest",
+        "memoryMbytes": 1024,
+        "timeoutSecs": 1800
+    },
+    "defaultRunOptions$comment": "Default 1 GB, from local runs on 2026-11-08 (engine branch platform/hirist): a keyword search reads 1 to 10 pages of 1,000 jobs, a few seconds; a run that needs every job reads the whole board, 28,770 jobs in 240 calls and about 90 MB, 28 s on the laptop with a 155 MB Python peak. Re-measure on Apify at 512 MB, 1 GB and 2 GB before publishing: CPU comes with memory, and parsing 90 MB of JSON on a quarter core is the cost that decides the default.",
+    "pricing": {
+        "$comment": "2026-11-08. Rule: rules/SEO.md section 16. Main competitor: themineworks/hirist-jobs-scraper, the most used Hirist actor (110 u30 of 182 across 37 Hirist actors): $0.005 a job on FREE, $0.0042 BRONZE, $0.00355 SILVER, $0.003 GOLD and above, plus Apify's apify-actor-start at $0.005 per GB (one row per job, description included). Paid users are the ones who earn, so the anchor is its BRONZE price: job $0.0036 is 14% under it and job-details $0.0037 12% under; on the Gentle ladder SILVER pays $0.00324 and $0.00333 (9% and 6% under its $0.00355), GOLD and above $0.00288 and $0.00296 (4% and 1% under its $0.003). FREE pays 26-28% less than its $0.005. Others: data_daemon $0.002 + $0.001 start (22 u30), crawloop $0.00249 + $0.00005 (5), logiover $0.003 (4), memo23 $0.002 + $0.0001 (3), parsebird $0.0049, stealth_mode $0.004 + $0.005, crawlpilot $0.02 + $0.05. Run start: Apify's apify-actor-start at $0.005 per GB, the competitor's own start fee, because a search whose words are rare reads the whole board (240 calls, about 90 MB) whatever it finds. Margin (owner: platform cost under 10% of 0.8 x revenue at every tier): to be re-measured on Apify; locally a 100-job search takes 1 to 10 calls in under 10 s. apply true; isPublic stays false until the priced proof run.",
+        "apply": true,
+        "pricingInfos": [
+            {
+                "pricingModel": "PAY_PER_EVENT",
+                "reasonForChange": "First pricing",
+                "pricingPerEvent": {
+                    "actorChargeEvents": {
+                        "job": {
+                            "eventTitle": "Job",
+                            "eventDescription": "One saved job row: title, company, locations, remote or onsite, years of experience, skills, pay in lakhs, company rating, posting date and job link. Also one checked job link that is closed or not found.",
+                            "isPrimaryEvent": true,
+                            "eventTieredPricingUsd": {
+                                "FREE": {
+                                    "tieredEventPriceUsd": 0.0036
+                                },
+                                "BRONZE": {
+                                    "tieredEventPriceUsd": 0.0036
+                                },
+                                "SILVER": {
+                                    "tieredEventPriceUsd": 0.00324
+                                },
+                                "GOLD": {
+                                    "tieredEventPriceUsd": 0.00288
+                                },
+                                "PLATINUM": {
+                                    "tieredEventPriceUsd": 0.00288
+                                },
+                                "DIAMOND": {
+                                    "tieredEventPriceUsd": 0.00288
+                                }
+                            }
+                        },
+                        "job-details": {
+                            "eventTitle": "Job with details",
+                            "eventDescription": "One saved job row with full details on: everything in a Job row plus the description as text and HTML, the number of applicants, the recruiter's own apply link when given, and the city, state and country.",
+                            "eventTieredPricingUsd": {
+                                "FREE": {
+                                    "tieredEventPriceUsd": 0.0037
+                                },
+                                "BRONZE": {
+                                    "tieredEventPriceUsd": 0.0037
+                                },
+                                "SILVER": {
+                                    "tieredEventPriceUsd": 0.00333
+                                },
+                                "GOLD": {
+                                    "tieredEventPriceUsd": 0.00296
+                                },
+                                "PLATINUM": {
+                                    "tieredEventPriceUsd": 0.00296
+                                },
+                                "DIAMOND": {
+                                    "tieredEventPriceUsd": 0.00296
+                                }
+                            }
+                        },
+                        "apify-actor-start": {
+                            "eventTitle": "Run start",
+                            "eventDescription": "Charged by Apify when a run starts: once up to 1 GB of memory and once more for each extra GB, so $0.005 at the default 1 GB. It pays for a search whose words are rare, which reads all of Hirist's jobs whatever it finds.",
+                            "eventPriceUsd": 0.005
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,482 @@
+{
+    "actorSpecification": 1,
+    "name": "hirist-jobs-search",
+    "title": "Hirist Jobs Scraper & API - India IT & Tech Jobs, Last 24 Hours",
+    "description": "Hirist jobs scraper and API for hirist.tech, India's tech job board: every open IT job searched live by title, skill, city, years of experience and posting date, newest first. 28,000+ jobs with skills, experience, salary in lakhs and company rating. No login.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "categories": [
+        "JOBS",
+        "LEAD_GENERATION",
+        "OPEN_SOURCE"
+    ],
+    "input": "./INPUT_SCHEMA.json",
+    "output": "./output_schema.json",
+    "dockerfile": "../Dockerfile",
+    "readme": "../README.md",
+    "minMemoryMbytes": 512,
+    "maxMemoryMbytes": 4096,
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Hirist jobs",
+            "description": "One row per job, newest first: title, company, locations, remote or onsite, years of experience, skills, pay in lakhs, company rating, posting date and link; with details on, also the description, the applicants and the city, state and country. The run summary is the OUTPUT record, not a row.",
+            "fields": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job title (title)",
+                        "description": "The job title as Hirist shows it, usually the company first: Company - Role - Skills.",
+                        "example": "Happiest Minds - Azure Integration lead/Architect"
+                    },
+                    "company": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Company name (company)",
+                        "description": "The hiring company as Hirist names it. A confidential job says Verified Company.",
+                        "example": "Happiest Minds Technologies"
+                    },
+                    "location": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Main location (location)",
+                        "description": "The job's first place on Hirist, such as Bangalore, Delhi NCR or Remote. For a job Hirist files under Others, the place the recruiter typed, such as Jaipur, Rajasthan.",
+                        "example": "Bangalore"
+                    },
+                    "otherLocations": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Other locations (otherLocations)",
+                        "description": "Every other place Hirist lists for the job.",
+                        "example": [
+                            "Pune"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "workType": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Remote or onsite (workType)",
+                        "description": "remote when Hirist marks the job work from home or lists Remote among its places (10.7% of jobs), else onsite. Hirist has no hybrid mark: some jobs on either side describe a hybrid setup in their text.",
+                        "example": "onsite"
+                    },
+                    "salary": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay summary (salary)",
+                        "description": "The pay Hirist shows, in lakhs of rupees a year, as in INR 30 - 40 lakh a year. Empty when the recruiter hides it, 93% of jobs.",
+                        "example": "INR 30 - 40 lakh a year"
+                    },
+                    "postedAt": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Posted on (postedAt)",
+                        "description": "When the job went live on Hirist, in UTC, exact to the second when that moment falls on the day Hirist shows (95% of jobs), else that day alone (YYYY-MM-DD).",
+                        "example": "2026-11-06T04:34:09Z"
+                    },
+                    "jobUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job link (jobUrl)",
+                        "description": "The job's page on hirist.tech, where you apply.",
+                        "example": "https://www.hirist.tech/j/happiest-minds-azure-integration-leadarchitect-1682564"
+                    },
+                    "applyUrl": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Apply link (applyUrl)",
+                        "description": "Where to apply: the job's page on hirist.tech, or with details on the recruiter's own link when Hirist gives one. Empty for a checked link that is closed or not found.",
+                        "example": "https://www.hirist.tech/j/happiest-minds-azure-integration-leadarchitect-1682564"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Still open? (status)",
+                        "description": "open for every search result (read live during the run). For a checked link: open, closed (Hirist no longer shows it) or not found (no such job).",
+                        "example": "open"
+                    },
+                    "platform": {
+                        "type": "string",
+                        "title": "Job site (platform)",
+                        "description": "The site the job came from: always hirist here.",
+                        "example": "hirist"
+                    },
+                    "jobId": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job ID (jobId)",
+                        "description": "Hirist's number for the job, the number at the end of its link.",
+                        "example": "1682564"
+                    },
+                    "checkedAt": {
+                        "type": "string",
+                        "title": "Checked at (checkedAt)",
+                        "description": "When the run read Hirist, in UTC.",
+                        "example": "2026-11-08T01:07:32+00:00"
+                    },
+                    "experienceMin": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Experience from (experienceMin)",
+                        "description": "The fewest years of experience the job asks for.",
+                        "example": 10
+                    },
+                    "experienceMax": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Experience up to (experienceMax)",
+                        "description": "The most years of experience the job asks for.",
+                        "example": 17
+                    },
+                    "skills": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Skills asked for (skills)",
+                        "description": "Hirist's skill tags for the job, on every job.",
+                        "example": [
+                            "Azure",
+                            "Solution Design",
+                            "Solution Architect",
+                            "Solution Integration"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "mandatorySkills": {
+                        "type": [
+                            "array",
+                            "null"
+                        ],
+                        "title": "Must-haves (mandatorySkills)",
+                        "description": "The skills the recruiter marked as required.",
+                        "example": [
+                            "Azure",
+                            "Solution Design",
+                            "Solution Architect"
+                        ],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "companyRating": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Rating 1-5 (companyRating)",
+                        "description": "The company's AmbitionBox rating, 1 to 5, as Hirist carries it: on 57% of jobs.",
+                        "example": 3.4
+                    },
+                    "companyReviews": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Company reviews (companyReviews)",
+                        "description": "How many AmbitionBox reviews that rating rests on.",
+                        "example": 1694
+                    },
+                    "salaryMin": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Lowest pay, INR (salaryMin)",
+                        "description": "The lowest pay Hirist shows, in rupees a year: 30 lakh is 3000000. Empty when the pay is hidden.",
+                        "example": 3000000
+                    },
+                    "salaryMax": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Highest pay, INR (salaryMax)",
+                        "description": "The highest pay Hirist shows, in rupees a year.",
+                        "example": 4000000
+                    },
+                    "salaryCurrency": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay currency (salaryCurrency)",
+                        "description": "INR when Hirist shows pay.",
+                        "example": "INR"
+                    },
+                    "salaryPeriod": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Pay period (salaryPeriod)",
+                        "description": "year: Hirist shows pay a year (lakhs per annum).",
+                        "example": "year"
+                    },
+                    "applicants": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "title": "Applicants so far (applicants)",
+                        "description": "How many people had applied when the run read the job, with details on and for company pages.",
+                        "example": 32
+                    },
+                    "description": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Job description (description)",
+                        "description": "The job description as plain text, with details on.",
+                        "example": "Job Description :\nRole : Azure Integration lead/ Architect\nRole Overview :\nWe are looking for an experienced Azure Integration Architect to design, develop, and implement scalable, secure, and reliable integration solutions..."
+                    },
+                    "descriptionHtml": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Description as HTML (descriptionHtml)",
+                        "description": "The job description in HTML as Hirist shows it, with details on.",
+                        "example": "<p><b>Job Description :</b><br/><br/>Role : Azure Integration lead/ Architect<br/><br/><b>Role Overview :</b>...</p>"
+                    },
+                    "city": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Town or city (city)",
+                        "description": "With details on: the city of the job's first place, by the name it goes by today (Bengaluru for Bangalore).",
+                        "example": "Bengaluru"
+                    },
+                    "region": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "State (region)",
+                        "description": "With details on: the state of the job's first place.",
+                        "example": "Karnataka"
+                    },
+                    "country": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Country name (country)",
+                        "description": "With details on: the country of the job's first place.",
+                        "example": "India"
+                    },
+                    "countryCode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "title": "Country code (countryCode)",
+                        "description": "With details on: the two-letter code of that country.",
+                        "example": "IN"
+                    }
+                }
+            },
+            "views": {
+                "jobs": {
+                    "title": "Jobs",
+                    "description": "One row per job: what it is, where, the years and skills it asks for, the pay and when it went live, with its link.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "location",
+                            "experienceMin",
+                            "experienceMax",
+                            "skills",
+                            "salary",
+                            "workType",
+                            "postedAt",
+                            "jobUrl"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "location": {
+                                "label": "Main location (location)",
+                                "format": "text"
+                            },
+                            "experienceMin": {
+                                "label": "Experience from (experienceMin)",
+                                "format": "number"
+                            },
+                            "experienceMax": {
+                                "label": "Experience up to (experienceMax)",
+                                "format": "number"
+                            },
+                            "skills": {
+                                "label": "Skills asked for (skills)",
+                                "format": "array"
+                            },
+                            "salary": {
+                                "label": "Pay summary (salary)",
+                                "format": "text"
+                            },
+                            "workType": {
+                                "label": "Remote or onsite (workType)",
+                                "format": "text"
+                            },
+                            "postedAt": {
+                                "label": "Posted on (postedAt)",
+                                "format": "date"
+                            },
+                            "jobUrl": {
+                                "label": "Job link (jobUrl)",
+                                "format": "link"
+                            }
+                        }
+                    }
+                },
+                "details": {
+                    "title": "Details",
+                    "description": "The description, applicants, pay as numbers, must-have skills, company rating and every other field of each job.",
+                    "transformation": {
+                        "fields": [
+                            "title",
+                            "company",
+                            "description",
+                            "applicants",
+                            "salaryMin",
+                            "salaryMax",
+                            "mandatorySkills",
+                            "companyRating",
+                            "companyReviews",
+                            "otherLocations",
+                            "city",
+                            "region",
+                            "applyUrl",
+                            "jobId",
+                            "status",
+                            "checkedAt"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Job title (title)",
+                                "format": "text"
+                            },
+                            "company": {
+                                "label": "Company name (company)",
+                                "format": "text"
+                            },
+                            "description": {
+                                "label": "Job description (description)",
+                                "format": "text"
+                            },
+                            "applicants": {
+                                "label": "Applicants so far (applicants)",
+                                "format": "number"
+                            },
+                            "salaryMin": {
+                                "label": "Lowest pay, INR (salaryMin)",
+                                "format": "number"
+                            },
+                            "salaryMax": {
+                                "label": "Highest pay, INR (salaryMax)",
+                                "format": "number"
+                            },
+                            "mandatorySkills": {
+                                "label": "Must-haves (mandatorySkills)",
+                                "format": "array"
+                            },
+                            "companyRating": {
+                                "label": "Rating 1-5 (companyRating)",
+                                "format": "number"
+                            },
+                            "companyReviews": {
+                                "label": "Company reviews (companyReviews)",
+                                "format": "number"
+                            },
+                            "otherLocations": {
+                                "label": "Other locations (otherLocations)",
+                                "format": "array"
+                            },
+                            "city": {
+                                "label": "Town or city (city)",
+                                "format": "text"
+                            },
+                            "region": {
+                                "label": "State (region)",
+                                "format": "text"
+                            },
+                            "applyUrl": {
+                                "label": "Apply link (applyUrl)",
+                                "format": "link"
+                            },
+                            "jobId": {
+                                "label": "Job ID (jobId)",
+                                "format": "text"
+                            },
+                            "status": {
+                                "label": "Still open? (status)",
+                                "format": "text"
+                            },
+                            "checkedAt": {
+                                "label": "Checked at (checkedAt)",
+                                "format": "date"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "keyValueStore": {
+            "actorKeyValueStoreSchemaVersion": 1,
+            "title": "Run summary",
+            "description": "The OUTPUT record: how many jobs Hirist listed, read, matched and saved, the checked links, the notes about how the input was read and the settings used, Hirist location ids and years of experience included.",
+            "collections": {
+                "summary": {
+                    "title": "Run summary (OUTPUT)",
+                    "description": "Status, message, counts of jobs read, matched and saved, checked links, notes and settings.",
+                    "key": "OUTPUT"
+                }
+            }
+        }
+    }
+}

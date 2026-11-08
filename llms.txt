@@ -1,0 +1,141 @@
+# Hirist Jobs Scraper & API - India IT & Tech Jobs, Last 24 Hours
+
+> Hirist jobs scraper and API for hirist.tech, India's tech job board: every open IT job searched live by title, skill, city, years of experience and posting date, newest first.
+
+## Summary
+
+Hirist Jobs Search is an Apify actor that searches every job on hirist.tech, India's tech job board, at once and returns one row per job, newest first: title, company, locations, remote or onsite, years of experience, skills, pay in lakhs when shown, company rating, posting date and link. On 2026-11-08 Hirist listed 28,770 open jobs at 4,654 companies, such as Unisys, Capgemini, Infosys, Publicis Sapient, Oracle and NatWest. It reads the public API that hirist.tech's own pages call, live at run time, with no login and no API key, and it reads past the 10,000 jobs one Hirist search can reach. It matches your words in job titles (and with Match skills too, in Hirist's skill tags), where Hirist's own search box matches loosely: 880 jobs with React in the title against 40 from Hirist's search for react.
+
+Store: https://apify.com/anshumanatrey/hirist-jobs-search
+Source: https://github.com/AnshumanAtrey/hirist-jobs-search
+
+## Key features
+
+- Every job on Hirist at once, 28,770 on 2026-11-08, read live, past the 10,000 one Hirist search reaches.
+- Years of experience as a range, skills with the must-haves marked, pay in lakhs a year when shown (7% of jobs), and the company's AmbitionBox rating (57%), on every row.
+- One keyword is enough; an empty form returns the newest jobs of every kind.
+- Newest first by the day Hirist shows, to the second for 95% of jobs.
+- Place filter by city, state or country: Bangalore or Bengaluru, Delhi NCR (its cities too), Karnataka, India.
+- Years of experience the way Hirist reads it: 5 finds the jobs asking 4 to 8 years.
+- Reads a pasted Hirist search link with its words, city, experience and period.
+- Job link check: each pasted Hirist job link comes back open, closed or not found.
+
+## Input keys
+
+- Job titles to find (searchTerms): one per line; a job matches when its title has every word.
+- Where the job is (location): city, state or country; Remote asks for remote jobs.
+- Years of experience (experience): your years, such as 5, or a range such as 3-6, 10+ or fresher.
+- Remote or onsite (workType): remote is what Hirist marks work from home or lists as Remote; onsite is every other job.
+- Posted in the last (postedWithin): 24 hours, 3 days, 7 days, 30 days, any time, or your own period.
+- Number of jobs (maxJobs): 100 by default, 0 for every match.
+- Full details (includeDetails): adds the description, the number of applicants, the recruiter's own apply link when given, and the city, state and country.
+- Leave out words (excludeTerms): drops jobs whose title has these words.
+- Match skills too (searchDescriptions): finds your words in Hirist's skill tags too.
+- Only these companies (companies): a company name or a Hirist company page link.
+- Job links to check (jobUrls): checks links instead of searching.
+
+## Pricing
+
+PAY_PER_EVENT model, platform usage included:
+
+- Job: $0.0036 per saved job ($3.60 per 1,000), and per checked link that is closed or not found
+- Job with details: $0.0037 per saved job with full details on ($3.70 per 1,000)
+- Run start: $0.005 per GB of memory, charged by Apify when a run starts, so $0.005 at the default 1 GB
+
+Hirist Jobs Scraper's Apify Store header, "from $2.88 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.0036 a job and $0.0037 with details; SILVER (Scale) pays 10% less, $0.00324 and $0.00333; GOLD (Business) and above pay 20% less, $0.00288 and $0.00296. The run start is a flat fee on every plan, $0.005 per GB of memory ($0.005 at the default 1 GB), and the header never shows it.
+
+Typical costs (Free and Starter price, default memory):
+
+- 100 newest jobs: $0.365
+- 100 jobs with full details: $0.375
+- 1,000 jobs: $3.605
+- Every job on Hirist, 28,356 delivered on 2026-11-08: $102.09
+
+A search whose words are rare reads all of Hirist's jobs whatever it finds; the run start pays for that read. Apify's free $5 monthly credit covers about 1,370 jobs in runs of 100.
+
+## Speed
+
+A few seconds for most searches: in local runs on 2026-11-08 the empty form took 1 call and 1 s, and a search for python developer 6 calls and 5 s. A search with rare words reads every job on Hirist, 240 calls, in 23 to 35 s.
+
+## How to call it
+
+- Apify API: POST https://api.apify.com/v2/acts/anshumanatrey~hirist-jobs-search/run-sync-get-dataset-items with your Apify token and the input as JSON.
+- Python: `ApifyClient("<YOUR_APIFY_TOKEN>").actor("anshumanatrey/hirist-jobs-search").call(run_input={"searchTerms": ["python developer"]})`
+- MCP: https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search
+
+## When to use
+
+- New IT and tech jobs in India by title, skill, city, experience and date, on a daily schedule.
+- Which companies hire for a skill right now, at what experience and in which cities.
+- Companies hiring tech teams in India as a sales signal, and skill demand by city.
+- One clean feed of Hirist jobs for a data pipeline or an AI agent.
+
+## When not to use
+
+- Management, finance and sales jobs: they are on iimjobs.com, Hirist's sister site, not on Hirist.
+- Jobs from other Indian job boards such as Naukri, Instahyre or Cutshort.
+- Only the jobs new since your last run: schedule a daily run with Posted in the last 24 hours and match rows on jobId.
+
+## Sample input
+
+```json
+{
+  "searchTerms": ["python developer"],
+  "location": ["Bangalore", "Pune"],
+  "experience": "5",
+  "postedWithin": "7 days",
+  "maxJobs": 100
+}
+```
+
+## Sample output (one record)
+
+```json
+{
+  "title": "Backend Developer - Python/FastAPI",
+  "company": "HiringBlaze",
+  "location": "Hyderabad",
+  "otherLocations": [],
+  "workType": "onsite",
+  "salary": "INR 12 - 15 lakh a year",
+  "postedAt": "2026-11-06T20:30:47Z",
+  "jobUrl": "https://www.hirist.tech/j/backend-developer-pythonfastapi-1682753",
+  "applyUrl": "https://www.hirist.tech/j/backend-developer-pythonfastapi-1682753",
+  "status": "open",
+  "platform": "hirist",
+  "jobId": "1682753",
+  "checkedAt": "2026-11-08T01:27:44+00:00",
+  "salaryMin": 1200000,
+  "salaryMax": 1500000,
+  "salaryCurrency": "INR",
+  "salaryPeriod": "year",
+  "experienceMin": 2,
+  "experienceMax": 4,
+  "skills": ["Backend Architecture", "Python", "RESTful API", "FastAPI", "Redis", "RDBMS", "PostgreSQL", "MySQL"],
+  "mandatorySkills": ["Backend Architecture", "Python", "FastAPI", "Redis", "RDBMS"],
+  "companyRating": null,
+  "companyReviews": null,
+  "applicants": null
+}
+```
+
+## Differentiators vs alternatives
+
+- vs themineworks/hirist-jobs-scraper (the most used, 110 users in 30 days): it sends your keyword to Hirist's search box and stops at 1,000 jobs a run, at $0.005 a job on the free plan; this actor matches titles on every job, reads every job, and costs less on every plan.
+- vs data_daemon/hirist-jobs-scraper: cheaper per job ($0.002 with the description) and covers iimjobs too; this actor adds the job link check, title and skill matching, and experience read the way Hirist reads it.
+- vs Hirist's own search box: it ranks by relevance and reads words loosely; this actor keeps the jobs whose title has your words, newest first.
+
+## Documentation
+
+- Apify Store: https://apify.com/anshumanatrey/hirist-jobs-search
+- GitHub repo: https://github.com/AnshumanAtrey/hirist-jobs-search
+- Issues / feedback: GitHub Issues on the above repo
+- License: MIT
+
+## Maintainer
+
+Anshuman Atrey, builder of a portfolio of data and OSINT actors on Apify, https://linkedin.com/in/anshumanatrey.
+
+## Last updated
+
+2026-11-08
