@@ -39,24 +39,24 @@ Source: https://github.com/AnshumanAtrey/hirist-jobs-search
 
 PAY_PER_EVENT model, platform usage included:
 
-- Job: $0.0036 per saved job ($3.60 per 1,000), and per checked link that is closed or not found
-- Job with details: $0.0037 per saved job with full details on ($3.70 per 1,000)
-- Run start: $0.005 per GB of memory, charged by Apify when a run starts, so $0.005 at the default 1 GB
+- Job: $0.000016 per saved job ($0.016 per 1,000), and per checked link that is closed or not found
+- Job with details: $0.000019 per saved job with full details on ($0.019 per 1,000)
+- Run start: $0.0068 per GB of memory, charged by Apify when a run starts, so $0.0068 at the default 512 MB
 
-Hirist Jobs Scraper's Apify Store header, "from $2.88 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base prices above, $0.0036 a job and $0.0037 with details; SILVER (Scale) pays 10% less, $0.00324 and $0.00333; GOLD (Business) and above pay 20% less, $0.00288 and $0.00296. The run start is a flat fee on every plan, $0.005 per GB of memory ($0.005 at the default 1 GB), and the header never shows it.
+Hirist Jobs Scraper's Apify Store header, "from $0.011 / 1,000 jobs", shows the GOLD price, the lowest of the public discount tiers. Each Apify plan pays its own tier's price: FREE (the free plan) $0.000016 a job and $0.000019 with details, BRONZE (Starter) $0.000016 and $0.000018, SILVER (Scale) $0.000013 and $0.000015, GOLD (Business) $0.000011 and $0.000013, PLATINUM and DIAMOND $0.000011 and $0.000012. The run start is a flat fee on every plan, $0.0068 per GB of memory ($0.0068 at the default 512 MB), and the header never shows it.
 
-Typical costs (Free and Starter price, default memory):
+Typical costs (free plan price, default memory):
 
-- 100 newest jobs: $0.365
-- 100 jobs with full details: $0.375
-- 1,000 jobs: $3.605
-- Every job on Hirist, 28,356 delivered on 2026-11-08: $102.09
+- 100 newest jobs: $0.0084
+- 100 jobs with full details: $0.0087
+- 1,000 jobs: $0.0228
+- Every job on Hirist, 28,358 delivered on 2026-11-08: $0.4605
 
-A search whose words are rare reads all of Hirist's jobs whatever it finds; the run start pays for that read. Apify's free $5 monthly credit covers about 1,370 jobs in runs of 100.
+A search whose words are rare reads all of Hirist's jobs whatever it finds; the run start pays for that read. Apify's free $5 monthly credit covers about 60,000 jobs in runs of 100.
 
 ## Speed
 
-A few seconds for most searches: in local runs on 2026-11-08 the empty form took 1 call and 1 s, and a search for python developer 6 calls and 5 s. A search with rare words reads every job on Hirist, 240 calls, in 23 to 35 s.
+A few seconds for most searches: on Apify on 2026-11-08 at the default 512 MB the empty form took 5 s, and a search for python developer 6 calls and 10 s. A search with rare words reads every job on Hirist, 240 calls, in 70 s (46 s at 1 GB).
 
 ## How to call it
 
@@ -122,8 +122,8 @@ A few seconds for most searches: in local runs on 2026-11-08 the empty form took
 
 ## Differentiators vs alternatives
 
-- vs themineworks/hirist-jobs-scraper (the most used, 110 users in 30 days): it sends your keyword to Hirist's search box and stops at 1,000 jobs a run, at $0.005 a job on the free plan; this actor matches titles on every job, reads every job, and costs less on every plan.
-- vs data_daemon/hirist-jobs-scraper: cheaper per job ($0.002 with the description) and covers iimjobs too; this actor adds the job link check, title and skill matching, and experience read the way Hirist reads it.
+- vs themineworks/hirist-jobs-scraper (the most used, 105 users in 30 days): it sends your keyword to Hirist's search box and stops at 1,000 jobs a run, at $0.005 a job plus a $0.005 run start on the free plan; this actor matches titles on every job, reads every job, and costs less on every plan for any run that saves a job.
+- vs data_daemon/hirist-jobs-scraper: includes the description at $0.002 a job, covers iimjobs too, and costs less for a run under 5 jobs ($0.001 run start); this actor costs less from 5 jobs a run and adds the job link check, title and skill matching, and experience read the way Hirist reads it.
 - vs Hirist's own search box: it ranks by relevance and reads words loosely; this actor keeps the jobs whose title has your words, newest first.
 
 ## Documentation

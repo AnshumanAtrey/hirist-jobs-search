@@ -2,7 +2,7 @@
 
 Hirist jobs scraper and API: search every job on hirist.tech, India's tech job board, at once, live, and get each job's title, company, locations, remote or onsite, years of experience, skills, salary in lakhs when shown, company rating, posting date and link, newest first. Turn on full details for the description, the number of applicants and the city, state and country.
 
-Use it as a Hirist API with no login, a hirist.tech scraper for IT jobs and tech jobs in India, or a daily job feed from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, and export JSON, CSV or Excel. It reads the same public API that hirist.tech's own pages call. Available as an [Apify Actor](https://apify.com/anshumanatrey/hirist-jobs-search). $0.0036 per job, $0.0037 with full details, $0.005 per run start at the default memory, no login, no API key.
+Use it as a Hirist API with no login, a hirist.tech scraper for IT jobs and tech jobs in India, or a daily job feed from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, and export JSON, CSV or Excel. It reads the same public API that hirist.tech's own pages call. Available as an [Apify Actor](https://apify.com/anshumanatrey/hirist-jobs-search). $0.000016 per job, $0.000019 with full details, $0.0068 per run start at the default memory, no login, no API key.
 
 ## What does it do?
 
@@ -41,24 +41,24 @@ Every actor on the Apify Store that names Hirist in its title or slug and had 4 
 
 ## How much does it cost to scrape Hirist jobs?
 
-Pay per event: $3.60 per 1,000 jobs, or $3.70 per 1,000 with full details, plus $0.005 per run at the default 1 GB of memory. Apify's free $5 monthly credit covers about 1,370 jobs in runs of 100. Platform usage is included, and there is no monthly fee.
+Pay per event: $0.016 per 1,000 jobs, or $0.019 per 1,000 with full details, plus $0.0068 per run at the default 512 MB of memory. Apify's free $5 monthly credit covers about 60,000 jobs in runs of 100. Platform usage is included, and there is no monthly fee.
 
 | Event | Price | When it is charged |
 |---|---|---|
-| Job | $0.0036 | One saved job, and one checked link that is closed or not found |
-| Job with details | $0.0037 | One saved job with full details on |
-| Run start | $0.005 per GB of memory | Charged by Apify when a run starts: once up to 1 GB and once more for each extra GB, so $0.005 at the default 1 GB |
+| Job | $0.000016 | One saved job, and one checked link that is closed or not found |
+| Job with details | $0.000019 | One saved job with full details on |
+| Run start | $0.0068 per GB of memory | Charged by Apify when a run starts: once up to 1 GB and once more for each extra GB, so $0.0068 at the default 512 MB |
 
-Hirist Jobs Scraper's Apify Store header, "from $2.88 / 1,000 jobs", shows the lowest discount-tier price: the GOLD price. FREE and BRONZE users (Apify's Free and Starter plans) pay the base price in the table, $0.0036 a job and $0.0037 with details; SILVER (Scale) pays 10% less, $0.00324 and $0.00333; GOLD (Business) and above pay 20% less, $0.00288 and $0.00296. The run start is a flat fee on every plan, $0.005 per GB of memory ($0.005 at the default 1 GB), and the header never shows it.
+Hirist Jobs Scraper's Apify Store header, "from $0.011 / 1,000 jobs", shows the GOLD price, the lowest of the public discount tiers. Each Apify plan pays its own tier's price: FREE (the free plan) $0.000016 a job and $0.000019 with details, BRONZE (Starter) $0.000016 and $0.000018, SILVER (Scale) $0.000013 and $0.000015, GOLD (Business) $0.000011 and $0.000013, PLATINUM and DIAMOND $0.000011 and $0.000012. The run start is a flat fee on every plan, $0.0068 per GB of memory ($0.0068 at the default 512 MB), and the header never shows it.
 
-| Run (Free and Starter price, default memory) | Cost |
+| Run (free plan price, default memory) | Cost |
 |---|---|
-| 100 newest jobs | $0.365 |
-| 100 jobs with full details | $0.375 |
-| 1,000 jobs | $3.605 |
-| Every job on Hirist, 28,356 delivered on 2026-11-08 | $102.09 |
+| 100 newest jobs | $0.0084 |
+| 100 jobs with full details | $0.0087 |
+| 1,000 jobs | $0.0228 |
+| Every job on Hirist, 28,358 delivered on 2026-11-08 | $0.4605 |
 
-Number of jobs (`maxJobs`) and the run start set the most a run can cost, and a run stops at its spending limit with a message saying so. Why a run start: a search whose words are rare reads all of Hirist's jobs, about 240 calls, whatever it finds.
+Number of jobs (`maxJobs`) and the run start set the most a run can cost, and a run stops at its spending limit with a message saying so. Why a run start: a search whose words are rare reads all of Hirist's jobs, 240 calls and about 70 seconds at the default memory, whatever it finds; the run start pays for that read, so each job costs little.
 
 ## How does the price compare with other Hirist scrapers?
 
@@ -66,15 +66,15 @@ Every actor on the Apify Store that names Hirist in its title or slug and had 3 
 
 | Actor | Users, 30 days | Per job | Start fee | Input |
 |---|---|---|---|---|
-| themineworks/hirist-jobs-scraper | 110 | $0.005 | $0.005 per GB | Keyword or one of 12 categories, up to 1,000 jobs |
-| data_daemon/hirist-jobs-scraper | 22 | $0.002 | $0.001 | Keywords, or the whole board |
+| themineworks/hirist-jobs-scraper | 105 | $0.005 | $0.005 per GB | Keyword or one of 12 categories, up to 1,000 jobs |
+| data_daemon/hirist-jobs-scraper | 23 | $0.002 | $0.001 | Keywords, or the whole board |
 | rt-solutions/india-tech-jobs-scraper | 6 | $0.0015 | none | Instahyre, Hirist and Cutshort in one format |
 | crawloop/hirist-jobs-scraper | 5 | $0.00249 | $0.00005 | Keyword, category, city or Hirist links |
 | logiover/hirist-tech-scraper | 4 | $0.003 | none | Keywords, cities, experience band |
 | memo23/hirist-jobs-scraper | 3 | $0.002 | $0.0001 | Keyword, city and experience |
-| This actor | new | $0.0036, $0.0037 with details | $0.005 per GB | One keyword or none, every job on Hirist |
+| This actor | new | $0.000016, $0.000019 with details | $0.0068 per GB | One keyword or none, every job on Hirist |
 
-Where others are cheaper: data_daemon, rt-solutions, crawloop, logiover and memo23 all cost less per job than this actor on the free plan, from $0.0015 to $0.003, and data_daemon includes the description at that price. The most used Hirist actor, themineworks, costs $0.005 a job on the free plan, $0.0042 on Starter, $0.00355 on Scale and $0.003 on Business, with the same $0.005 run start; this actor costs less on every plan. Where others do more: themineworks and crawloop browse Hirist's 12 categories, and themineworks, data_daemon and crawloop can deliver only jobs new since your last run.
+Where others are cheaper: runs that save only a few jobs, because this actor's run start is $0.0068 and theirs is $0.001 or less. Depending on the plan, crawloop, logiover and memo23 can cost less for a run under 4 jobs, data_daemon under 5 and rt-solutions under 7; from 7 jobs a run this actor costs less than every actor in the table on every plan: 100 jobs on the free plan cost $0.0084 here, $0.505 on themineworks, the most used, and $0.15 to $0.30 on the others. The most used Hirist actor, themineworks, costs $0.005 a job on the free plan, $0.0042 on Starter, $0.00355 on Scale and $0.003 on Business, plus a $0.005 run start; this actor costs less on every plan for any run that saves a job. Where others do more: themineworks and crawloop browse Hirist's 12 categories, and themineworks, data_daemon and crawloop can deliver only jobs new since your last run.
 
 ## Which inputs does it take?
 
@@ -153,7 +153,7 @@ Full details add `description`, `descriptionHtml`, `applicants`, `city`, `region
 
 ## How fast is it?
 
-A few seconds for most searches. In local runs on 2026-11-08 the empty form took 1 call and 1 s, and the example input 6 calls and 5 s; a search for a city, a period or years of experience asks Hirist to filter, so it reads fewer jobs. A search whose words are rare reads every job on Hirist, 240 calls and about 90 MB, in 23 to 35 s, and every job, 28,356 rows, took 35 s. Full details read each saved job once more, a few seconds per 100 jobs.
+A few seconds for most searches. On Apify on 2026-11-08 at the default 512 MB, the empty form took 5 s and the example input 10 s with 6 calls, about the same at 1 GB and 2 GB; a search for a city, a period or years of experience asks Hirist to filter, so it reads fewer jobs. A search whose words are rare reads every job on Hirist, 240 calls, in 70 s (46 s at 1 GB), and every job, 28,358 rows, took 94 s with a 254 MB memory peak. Full details read each saved job once more: 100 devops engineer jobs with details took 10 s and 105 calls.
 
 ## Common questions
 
@@ -183,7 +183,7 @@ Hirist Jobs Scraper needs no Hirist login and no API key, because it reads the p
 
 ### Does it work on Apify's free plan?
 
-Hirist Jobs Scraper works on Apify's free plan, which pays the base price: $0.0036 a job plus the $0.005 run start at the default 1 GB. The free $5 monthly credit pays for about 1,370 jobs in runs of 100, at $0.365 a run.
+Hirist Jobs Scraper works on Apify's free plan, which pays the FREE price: $0.000016 a job plus the $0.0068 run start at the default 512 MB. The free $5 monthly credit pays for about 60,000 jobs in runs of 100, at $0.0084 a run.
 
 ### How often should I run it?
 
@@ -195,7 +195,7 @@ To get every open job of one company with Hirist Jobs Scraper, type the company'
 
 ### How do I check a list of job links?
 
-Hirist Jobs Scraper checks whether Hirist job links are still open when you paste them into Job links to check (`jobUrls`), one per line, instead of searching. Links on hirist.tech and hirist.com work, old .html links too. Each link comes back as one row, open with the job's fields, closed, or not found, so 10 links come to $0.041 with the run start.
+Hirist Jobs Scraper checks whether Hirist job links are still open when you paste them into Job links to check (`jobUrls`), one per line, instead of searching. Links on hirist.tech and hirist.com work, old .html links too. Each link comes back as one row, open with the job's fields, closed, or not found, so 10 links come to $0.00696 with the run start.
 
 ### Is iimjobs included?
 
@@ -256,7 +256,7 @@ Hirist Jobs Scraper reads public job postings. You are responsible for how you u
 - The number of applicants comes with full details and for jobs read from a company page; Hirist hides view counts from visitors.
 - Titles and companies are as Hirist shows them: most titles start with the company, and a confidential job's company reads Verified Company.
 - A job a company posts twice with the same title at the same place is delivered once (412 such copies on 2026-11-08).
-- A search with rare words, and a company with no Hirist company page, read every job on Hirist, about 30 seconds.
+- A search with rare words, and a company with no Hirist company page, read every job on Hirist, about 70 seconds at the default memory.
 - Hirist's category pages (/c/) are not read as a filter: type the job titles or skills instead.
 
 ## Who maintains it?

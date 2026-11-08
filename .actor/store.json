@@ -12,17 +12,17 @@
     "isPublic": false,
     "defaultRunOptions": {
         "build": "latest",
-        "memoryMbytes": 1024,
+        "memoryMbytes": 512,
         "timeoutSecs": 1800
     },
-    "defaultRunOptions$comment": "Default 1 GB, from local runs on 2026-11-08 (engine branch platform/hirist): a keyword search reads 1 to 10 pages of 1,000 jobs, a few seconds; a run that needs every job reads the whole board, 28,770 jobs in 240 calls and about 90 MB, 28 s on the laptop with a 155 MB Python peak. Re-measure on Apify at 512 MB, 1 GB and 2 GB before publishing: CPU comes with memory, and parsing 90 MB of JSON on a quarter core is the cost that decides the default.",
+    "defaultRunOptions$comment": "Default 512 MB, measured on Apify on 2026-11-08 (build 1.0.1): the example search took 10 s at 512 MB, 1 GB and 2 GB alike (6 calls, 80 MB peak), so more memory buys a keyword search no speed and 512 MB halves its compute; a rare word reads every job, 240 calls, 70 s and 0.0098 CU at 512 MB against 46 s and 0.0127 CU at 1 GB; every job, 28,358 rows, took 94 s with a 254 MB peak at 512 MB. Start events are one per run up to 1 GB, so 512 MB costs the user the same.",
     "pricing": {
-        "$comment": "2026-11-08, round 3 (BRIEF-3.md): GitHub Actions is locked, so this Actor goes up with apify push from a fresh clone of main and its listing with scripts/store-metadata.mjs run locally (owner-approved exception to deploying through CI). apply is false for the first deploy, so the measuring runs on Apify are unpriced and their cost is the platform's alone; the prices below are round 1's placeholders, replaced by the measured cost plus a 100 to 150% markup by tier (BRIEF-3.md section 3) before apply goes true. isPublic stays false until the owner's final check.",
-        "apply": false,
+        "$comment": "Owner rule 2026-11-08 (BRIEF-3.md section 3): measured Apify cost plus a markup by tier, FREE 150%, BRONZE 140%, SILVER 125%, GOLD 110%, PLATINUM and DIAMOND 100%; markup = (0.8 x price - cost) / cost, cost at each tier's unit prices from https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md (read 2026-11-08; PLATINUM and DIAMOND at GOLD's), prices rounded up to two significant figures, none under $0.00001. Cost model at 512 MB from 8 Apify runs of build 1.0.1 on 2026-11-08 (BBV3yOUnfJjLVYjvq every job, YB6lDCKHLOp3oG6f3 1,000 jobs, KheURfRwJZKkUgxbc and hJ8pAKZUvEwVonoxS with details, and four searches): a job costs $0.0000051 at FREE (a dataset write and a little compute), a job with details $0.0000059, a run $0.00034 fixed. The run start, $0.0068 per GB, is raised from $0.0011 (that fixed cost at 150%) so that every measured run clears a 100% markup on every tier: the binding run is a rare word, rust, at 1 GB (s6fIzQGs5blGhyzZx: 32 jobs after reading all 28,769, $0.0029 of usage), 101% on FREE and BRONZE; at the default 512 MB alone it would need $0.0054. House rule for comparison (SEO.md 16, 5-15% under themineworks/hirist-jobs-scraper): $0.0036 a job, $0.0037 with details, $0.0045 start. isPublic stays false until the owner's final check.",
+        "apply": true,
         "pricingInfos": [
             {
                 "pricingModel": "PAY_PER_EVENT",
-                "reasonForChange": "First pricing",
+                "reasonForChange": "First pricing: measured cost plus a 100-150% markup by tier",
                 "pricingPerEvent": {
                     "actorChargeEvents": {
                         "job": {
@@ -31,22 +31,22 @@
                             "isPrimaryEvent": true,
                             "eventTieredPricingUsd": {
                                 "FREE": {
-                                    "tieredEventPriceUsd": 0.0036
+                                    "tieredEventPriceUsd": 0.000016
                                 },
                                 "BRONZE": {
-                                    "tieredEventPriceUsd": 0.0036
+                                    "tieredEventPriceUsd": 0.000016
                                 },
                                 "SILVER": {
-                                    "tieredEventPriceUsd": 0.00324
+                                    "tieredEventPriceUsd": 0.000013
                                 },
                                 "GOLD": {
-                                    "tieredEventPriceUsd": 0.00288
+                                    "tieredEventPriceUsd": 0.000011
                                 },
                                 "PLATINUM": {
-                                    "tieredEventPriceUsd": 0.00288
+                                    "tieredEventPriceUsd": 0.000011
                                 },
                                 "DIAMOND": {
-                                    "tieredEventPriceUsd": 0.00288
+                                    "tieredEventPriceUsd": 0.000011
                                 }
                             }
                         },
@@ -55,29 +55,29 @@
                             "eventDescription": "One saved job row with full details on: everything in a Job row plus the description as text and HTML, the number of applicants, the recruiter's own apply link when given, and the city, state and country.",
                             "eventTieredPricingUsd": {
                                 "FREE": {
-                                    "tieredEventPriceUsd": 0.0037
+                                    "tieredEventPriceUsd": 0.000019
                                 },
                                 "BRONZE": {
-                                    "tieredEventPriceUsd": 0.0037
+                                    "tieredEventPriceUsd": 0.000018
                                 },
                                 "SILVER": {
-                                    "tieredEventPriceUsd": 0.00333
+                                    "tieredEventPriceUsd": 0.000015
                                 },
                                 "GOLD": {
-                                    "tieredEventPriceUsd": 0.00296
+                                    "tieredEventPriceUsd": 0.000013
                                 },
                                 "PLATINUM": {
-                                    "tieredEventPriceUsd": 0.00296
+                                    "tieredEventPriceUsd": 0.000012
                                 },
                                 "DIAMOND": {
-                                    "tieredEventPriceUsd": 0.00296
+                                    "tieredEventPriceUsd": 0.000012
                                 }
                             }
                         },
                         "apify-actor-start": {
                             "eventTitle": "Run start",
-                            "eventDescription": "Charged by Apify when a run starts: once up to 1 GB of memory and once more for each extra GB, so $0.005 at the default 1 GB. It pays for a search whose words are rare, which reads all of Hirist's jobs whatever it finds.",
-                            "eventPriceUsd": 0.005
+                            "eventDescription": "Charged by Apify when a run starts: once up to 1 GB of memory and once more for each extra GB, so $0.0068 at the default 512 MB. It pays for a search whose words are rare, which reads all of Hirist's jobs whatever it finds.",
+                            "eventPriceUsd": 0.0068
                         }
                     }
                 }

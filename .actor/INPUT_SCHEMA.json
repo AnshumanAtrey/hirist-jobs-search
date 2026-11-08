@@ -98,7 +98,7 @@
             "title": "Full details (includeDetails)",
             "type": "boolean",
             "editor": "checkbox",
-            "description": "Tick to add the full details of each job: the description as text and HTML, the number of applicants, Hirist's own job link, an outside apply link when the recruiter gave one, and the city, state and country. The run reads each saved job once more. A job with details costs $3.70 per 1,000 instead of $3.60.",
+            "description": "Tick to add the full details of each job: the description as text and HTML, the number of applicants, Hirist's own job link, an outside apply link when the recruiter gave one, and the city, state and country. The run reads each saved job once more. A job with details costs $0.019 per 1,000 instead of $0.016.",
             "default": false,
             "nullable": true
         },
