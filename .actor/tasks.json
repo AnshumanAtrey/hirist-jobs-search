@@ -1,5 +1,5 @@
 {
-    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema, or the page stops showing after a build. options follow defaultRunOptions in store.json.",
+    "$comment": "Example tasks published on the Store by scripts/publish-tasks.mjs after every deploy (CI only). Each one is a search people type, with its own Google-indexed landing page and .md (manager/rules/SEO.md section 18). Limits: title 63, description 400, seoTitle 60, seoDescription 160 (154 kept), 10 per actor. inputSchemaFields must stay fields of the input schema, or the page stops showing after a build. options follow defaultRunOptions in store.json. Tasks marked publish false stay saved but off the Store: the account publishes at most 100 pages across all actors, so each actor keeps 2 or more by its earnings and search traffic (2026-11-11).",
     "options": {
         "build": "latest",
         "memoryMbytes": 1024,
@@ -8,6 +8,7 @@
     "tasks": [
         {
             "name": "hirist-jobs-last-24-hours",
+            "publish": false,
             "title": "Find the newest Hirist jobs posted in the last 24 hours",
             "description": "Get the newest IT and tech jobs posted on hirist.tech in the last day, with the company, location, years of experience, skills, pay when shown and link. Set Number of jobs to 0 to get every one, and schedule it daily for a fresh feed.",
             "input": {
@@ -67,6 +68,7 @@
         },
         {
             "name": "python-developer-jobs-bangalore-hirist",
+            "publish": false,
             "title": "Find Python developer jobs in Bangalore on Hirist",
             "description": "Search every job on hirist.tech for Python developer roles in Bangalore (Bengaluru), newest first, with the company, years of experience, skills, pay when shown and link.",
             "input": {
@@ -99,6 +101,7 @@
         },
         {
             "name": "java-developer-jobs-5-years",
+            "publish": false,
             "title": "Find Java developer jobs for 5 years of experience on Hirist",
             "description": "Get the newest Java developer jobs on hirist.tech that take 5 years of experience, the way Hirist's own filter reads it: a job for 4 to 8 years counts. With the company, city, skills, pay when shown and link.",
             "input": {
@@ -129,6 +132,7 @@
         },
         {
             "name": "data-engineer-jobs-hirist",
+            "publish": false,
             "title": "Find data engineer jobs in India on Hirist",
             "description": "Search every job on hirist.tech for data engineer roles, newest first, with the company, city, years of experience, skills such as Spark or Databricks, pay when shown and link.",
             "input": {
@@ -159,6 +163,7 @@
         },
         {
             "name": "devops-jobs-pune-hyderabad",
+            "publish": false,
             "title": "Find DevOps jobs in Pune and Hyderabad on Hirist",
             "description": "Get the newest DevOps and SRE jobs on hirist.tech in Pune and Hyderabad, with the company, years of experience, skills, pay when shown and link.",
             "input": {
@@ -193,6 +198,7 @@
         },
         {
             "name": "react-jobs-by-skill-hirist",
+            "publish": false,
             "title": "Find every job asking for React on Hirist",
             "description": "Get the newest jobs on hirist.tech that ask for React, by title or by Hirist's skill tags, with the company, city, years of experience, pay when shown and link. Match skills too finds 2,131 such jobs where the title alone finds 880 (2026-11-08).",
             "input": {
@@ -251,6 +257,7 @@
         },
         {
             "name": "delhi-ncr-it-jobs-hirist",
+            "publish": false,
             "title": "Find IT jobs in Delhi NCR on Hirist",
             "description": "Get the newest tech jobs on hirist.tech in Delhi NCR: Delhi, Gurgaon, Noida, Greater Noida, Faridabad and Ghaziabad, with the company, years of experience, skills, pay when shown and link.",
             "input": {
@@ -281,6 +288,7 @@
         },
         {
             "name": "hirist-jobs-with-details",
+            "publish": false,
             "title": "Get Hirist jobs with full descriptions and applicants",
             "description": "Get the newest jobs on hirist.tech with full details: the description as text and HTML, the number of applicants, and the city, state and country, besides the company, experience, skills and pay.",
             "input": {
