@@ -4,6 +4,13 @@ Hirist jobs scraper and API: search every job on hirist.tech, India's tech job b
 
 Use it as a Hirist API with no login, a hirist.tech scraper for IT jobs and tech jobs in India, or a daily job feed from the Apify Console, the Apify API, Python, JavaScript, n8n, Make or an AI agent, and export JSON, CSV or Excel. It reads the same public API that hirist.tech's own pages call. Available as an [Apify Actor](https://apify.com/anshumanatrey/hirist-jobs-search). $0.000016 per job, $0.000019 with full details, $0.0068 per run start at the default memory, no login, no API key.
 
+**Use it from an AI assistant:**
+
+- **Claude** (claude.ai and the desktop app): [Add Hirist Jobs to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Hirist%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fhirist-jobs-search), click Continue, sign in to Apify, Allow, and ask in plain words.
+- **Claude Code:** `claude mcp add --transport http hirist-jobs-search "https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search"`, then run `/mcp` to sign in to Apify.
+- **Codex:** `codex mcp add hirist-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search"`, then `codex mcp login hirist-jobs-search`.
+- **Any other MCP client:** `https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search`, signed in with Apify or an `Authorization: Bearer <APIFY_TOKEN>` header.
+
 ## What does it do?
 
 - **Searches every job on Hirist at once.** On 2026-11-08 Hirist listed 28,770 open jobs at 4,654 companies, at employers such as Unisys, Capgemini, Infosys, Publicis Sapient, Oracle, Happiest Minds and NatWest. Hirist's own pages reach the newest 10,000 of one search; this actor reads the rest too.

@@ -9,6 +9,13 @@ Hirist Jobs Search is an Apify actor that searches every job on hirist.tech, Ind
 Store: https://apify.com/anshumanatrey/hirist-jobs-search
 Source: https://github.com/AnshumanAtrey/hirist-jobs-search
 
+## Use it from an AI assistant
+
+- Claude (claude.ai and the desktop app): https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Hirist%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fhirist-jobs-search (click Continue, sign in to Apify, Allow).
+- Claude Code: claude mcp add --transport http hirist-jobs-search "https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search", then /mcp to sign in to Apify.
+- Codex: codex mcp add hirist-jobs-search --url "https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search", then codex mcp login hirist-jobs-search.
+- Any other MCP client: https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search, signed in with Apify or Authorization: Bearer <APIFY_TOKEN>.
+
 ## Key features
 
 - Every job on Hirist at once, 28,770 on 2026-11-08, read live, past the 10,000 one Hirist search reaches.
