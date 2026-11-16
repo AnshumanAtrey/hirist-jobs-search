@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "hirist-jobs-search": {
+      "url": "https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search",
+      "headers": {
+        "Authorization": "Bearer <YOUR_APIFY_TOKEN>"
+      }
+    }
+  }
+}
