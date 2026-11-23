@@ -99,6 +99,7 @@ Nothing is required. Type a job title and press Start, or press Start with the f
 | Remote or onsite (`workType`) | remote is what Hirist marks work from home or lists as Remote; onsite is every other job |
 | Posted in the last (`postedWithin`) | 24 hours, 3 days, 7 days, 30 days (the default), any time, or your own period such as 48 hours |
 | Number of jobs (`maxJobs`) | How many, newest first: 100 by default, 0 for every match |
+| Only new jobs (`onlyNewJobs`) | On: a run again returns only jobs no earlier run of it delivered, so a schedule never gets or pays for a job twice. Off by default |
 | Full details (`includeDetails`) | Adds the description as text and HTML, the number of applicants, the recruiter's own apply link when given, and the city, state and country |
 | Leave out words (`excludeTerms`) | Drops jobs whose title has these words, such as senior or lead |
 | Match skills too (`searchDescriptions`) | Finds your words in Hirist's skill tags too, not only the title |
