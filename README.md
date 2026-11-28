@@ -3,6 +3,7 @@
 [![Run on Apify](https://img.shields.io/badge/Run%20on-Apify-246DFF?style=for-the-badge)](https://apify.com/anshumanatrey/hirist-jobs-search) [![Add to Claude](https://img.shields.io/badge/Add%20to-Claude-D97757?style=for-the-badge)](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Hirist%20Jobs&connectorUrl=https%3A%2F%2Fmcp.apify.com%3Ftools%3Danshumanatrey%2Fhirist-jobs-search) [![API examples](https://img.shields.io/badge/API-examples-24292F?style=for-the-badge)](examples)
 
 This repo is the public home of the [Hirist Jobs Scraper & API - India IT & Tech Jobs, Last 24 Hours](https://apify.com/anshumanatrey/hirist-jobs-search) actor on Apify: its docs, API examples in [`examples/`](examples), MCP setup and issues. The actor runs on Apify; its source code is private.
+In Gemini CLI: `gemini extensions install https://github.com/AnshumanAtrey/hirist-jobs-search` (asks for your Apify API token).
 
 Hirist jobs scraper and API: search every job on hirist.tech, India's tech job board, at once, live, and get each job's title, company, locations, remote or onsite, years of experience, skills, salary in lakhs when shown, company rating, posting date and link, newest first. Turn on full details for the description, the number of applicants and the city, state and country.
 

@@ -1,0 +1,21 @@
+{
+  "name": "hirist-jobs-search",
+  "version": "1.0.0",
+  "description": "Search every hirist.tech job at once: IT and tech jobs in India by title, skill, city and years of experience, newest first, with pay in lakhs. No login.",
+  "mcpServers": {
+    "hirist-jobs-search": {
+      "httpUrl": "https://mcp.apify.com?tools=anshumanatrey/hirist-jobs-search",
+      "headers": {
+        "Authorization": "Bearer ${APIFY_TOKEN}"
+      }
+    }
+  },
+  "settings": [
+    {
+      "name": "Apify API token",
+      "envVar": "APIFY_TOKEN",
+      "sensitive": true,
+      "description": "From Apify Console, Settings, API & Integrations. Runs bill to this account."
+    }
+  ]
+}
